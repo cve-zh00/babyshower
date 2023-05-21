@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Baby Shower Regalos</title>
+    <style>
+        /* estilos... */
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center">Regalos disponibles para el Baby Shower</h2>
+
+    <div id="cardsContainer"></div>
+
+    <script>
+        // Hacemos la solicitud a la API
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+        "accion": 1
+        });
+
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("https://us-central1-responsive-sun-371200.cloudfunctions.net/function-1", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        function createCards(productos) {
+            var cardsContainer = document.getElementById("cardsContainer");
+            productos.forEach(producto => {
+                // Creamos el elemento de la tarjeta y sus elementos hijos
+                var card = document.createElement("div");
+                card.className = "card";
+                var content = document.createElement("div");
+                content.className = "content";
+                var img = document.createElement("img");
+                img.src = producto.imagen;
+                var textContent = document.createElement("div");
+                textContent.className = "text-content";
+                var h3 = document.createElement("h3");
+                h3.innerText = producto.titulo;
+                var p = document.createElement("p");
+                p.innerText = "Presiona aquí para ver los lugares sugeridos para la compra";
+                var button = document.createElement("button");
+                button.innerText = "Comprar";
+                button.onclick = function() { toggleInfo('info_' + producto.titulo, 'links_' + producto.titulo) };
+                textContent.appendChild(h3);
+                textContent.appendChild(p);
+                textContent.appendChild(button);
+
+                var linksDiv = document.createElement("div");
+                linksDiv.id = 'links_' + producto.titulo;
+                linksDiv.className = "hidden";
+                producto.links.forEach(link => {
+                    var a = document.createElement("a");
+                    a.href = link;
+                    a.innerText = link;
+                    var br = document.createElement("br");
+                    linksDiv.appendChild(a);
+                    linksDiv.appendChild(br);
+                });
+                var backButton = document.createElement("button");
+                backButton.innerText = "Volver";
+                backButton.onclick = function() { toggleInfo('links_' + producto.titulo, 'info_' + producto.titulo) };
+                linksDiv.appendChild(backButton);
+                textContent.appendChild(linksDiv);
+
+                content.appendChild(img);
+                content.appendChild(textContent);
+                card.appendChild(content);
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        function toggleInfo(infoId, linksId) {
+            var info = document.getElementById(infoId);
+            var links = document.getElementById(linksId);
+            if (info.style.display === "none") {
+                info.style.display = "block";
+                links.style.display = "none";
+            } else {
+                info.style.display = "none";
+                links.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
