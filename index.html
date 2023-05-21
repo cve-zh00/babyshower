@@ -18,13 +18,13 @@
 
         var raw = JSON.stringify({
         "accion": 1
-        });
+            });
 
         var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
 
         fetch("https://us-central1-responsive-sun-371200.cloudfunctions.net/function-1", requestOptions)
