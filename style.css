@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.card .content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.card img {
+    width: 40%;
+    height: auto;
+}
+
+.text-content {
+    padding: 20px;
+    text-align: left;
+    flex: 1;
+}
+
+.text-content p, .text-content button {
+    margin-top: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.hidden {
+    display: none;
+    transition: opacity 0.5s ease;
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+    }
+}

@@ -2,9 +2,7 @@
 <html>
 <head>
     <title>Baby Shower Regalos</title>
-    <style>
-        /* estilos... */
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h2 style="text-align:center">Regalos disponibles para el Baby Shower</h2>
@@ -28,8 +26,10 @@
         };
 
         fetch("https://us-central1-responsive-sun-371200.cloudfunctions.net/function-1", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
+        .then(response => response.json()) // convertir la respuesta a JSON
+        .then(result => {
+            createCards(result.productos); // crea las tarjetas con el resultado
+        })
         .catch(error => console.log('error', error));
 
         function createCards(productos) {
@@ -49,12 +49,13 @@
                 var p = document.createElement("p");
                 p.innerText = "Presiona aquí para ver los lugares sugeridos para la compra";
                 var button = document.createElement("button");
+                button.onclick = function() { toggleInfo(textContent, linksDiv) };
+                
                 button.innerText = "Comprar";
-                button.onclick = function() { toggleInfo('info_' + producto.titulo, 'links_' + producto.titulo) };
                 textContent.appendChild(h3);
                 textContent.appendChild(p);
                 textContent.appendChild(button);
-
+                card.appendChild(textContent);
                 var linksDiv = document.createElement("div");
                 linksDiv.id = 'links_' + producto.titulo;
                 linksDiv.className = "hidden";
@@ -66,10 +67,11 @@
                     linksDiv.appendChild(a);
                     linksDiv.appendChild(br);
                 });
+
                 var backButton = document.createElement("button");
-                backButton.innerText = "Volver";
-                backButton.onclick = function() { toggleInfo('links_' + producto.titulo, 'info_' + producto.titulo) };
+                backButton.onclick = function() { toggleInfo(linksDiv, textContent) };
                 linksDiv.appendChild(backButton);
+                backButton.innerText = "Volver";
                 textContent.appendChild(linksDiv);
 
                 content.appendChild(img);
@@ -78,18 +80,17 @@
                 cardsContainer.appendChild(card);
             });
         }
-
-        function toggleInfo(infoId, linksId) {
-            var info = document.getElementById(infoId);
-            var links = document.getElementById(linksId);
-            if (info.style.display === "none") {
-                info.style.display = "block";
-                links.style.display = "none";
-            } else {
-                info.style.display = "none";
-                links.style.display = "block";
+        function toggleInfo(info, links) {
+                if (info.style.display === "none") {
+                    info.style.display = "block";
+                    links.style.display = "none";
+                } else {
+                    info.style.display = "none";
+                    links.style.display = "block";
+                }
             }
-        }
+    
+
     </script>
 </body>
 </html>
