@@ -1,96 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Baby Shower Regalos</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Reservar Evento</title>
 </head>
 <body>
-    <h2 style="text-align:center">Regalos disponibles para el Baby Shower</h2>
-
-    <div id="cardsContainer"></div>
+    <button id="reserveButton">Reservar</button>
 
     <script>
-        // Hacemos la solicitud a la API
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+    document.getElementById("reserveButton").addEventListener("click", function() {
+        fetch('https://us-central1-responsive-sun-371200.cloudfunctions.net/function-4')
+            .then(response => {
+                if (!response.ok) throw new Error("Error al reservar evento");
+                return response.blob();
+            })
+            .then(blob => {
+                // Crear un objeto URL para el blob
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'evento.ics');
 
-        var raw = JSON.stringify({
-        "accion": 1
+                // Agregar el enlace al DOM y hacer clic en él
+                document.body.appendChild(link);
+                link.click();
+
+                // Eliminar el enlace después de descargar el archivo
+                document.body.removeChild(link);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Hubo un error al tratar de reservar el evento. Por favor, intenta nuevamente.");
             });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        fetch("https://us-central1-responsive-sun-371200.cloudfunctions.net/function-1", requestOptions)
-        .then(response => response.json()) // convertir la respuesta a JSON
-        .then(result => {
-            createCards(result.productos); // crea las tarjetas con el resultado
-        })
-        .catch(error => console.log('error', error));
-
-        function createCards(productos) {
-            var cardsContainer = document.getElementById("cardsContainer");
-            productos.forEach(producto => {
-                // Creamos el elemento de la tarjeta y sus elementos hijos
-                var card = document.createElement("div");
-                card.className = "card";
-                var content = document.createElement("div");
-                content.className = "content";
-                var img = document.createElement("img");
-                img.src = producto.imagen;
-                var textContent = document.createElement("div");
-                textContent.className = "text-content";
-                var h3 = document.createElement("h3");
-                h3.innerText = producto.titulo;
-                var p = document.createElement("p");
-                p.innerText = "Presiona aquí para ver los lugares sugeridos para la compra";
-                var button = document.createElement("button");
-                button.onclick = function() { toggleInfo(textContent, linksDiv) };
-                
-                button.innerText = "Comprar";
-                textContent.appendChild(h3);
-                textContent.appendChild(p);
-                textContent.appendChild(button);
-                card.appendChild(textContent);
-                var linksDiv = document.createElement("div");
-                linksDiv.id = 'links_' + producto.titulo;
-                linksDiv.className = "hidden";
-                producto.links.forEach(link => {
-                    var a = document.createElement("a");
-                    a.href = link;
-                    a.innerText = link;
-                    var br = document.createElement("br");
-                    linksDiv.appendChild(a);
-                    linksDiv.appendChild(br);
-                });
-
-                var backButton = document.createElement("button");
-                backButton.onclick = function() { toggleInfo(linksDiv, textContent) };
-                linksDiv.appendChild(backButton);
-                backButton.innerText = "Volver";
-                textContent.appendChild(linksDiv);
-
-                content.appendChild(img);
-                content.appendChild(textContent);
-                card.appendChild(content);
-                cardsContainer.appendChild(card);
-            });
-        }
-        function toggleInfo(info, links) {
-                if (info.style.display === "none") {
-                    info.style.display = "block";
-                    links.style.display = "none";
-                } else {
-                    info.style.display = "none";
-                    links.style.display = "block";
-                }
-            }
-    
-
+    });
     </script>
 </body>
 </html>

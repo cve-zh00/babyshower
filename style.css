@@ -42,8 +42,24 @@ body {
     transition: opacity 0.5s ease;
 }
 
+
+
 @media screen and (max-width: 600px) {
     .card {
         width: 90%;
     }
+}
+.link:hover {
+    color: #551A8B; /* cambiar el color al pasar el cursor por encima */
+}
+
+.link:active {
+    color: #EE0000; /* cambiar el color al hacer clic */
+}
+.link{
+    display: block;
+    text-decoration: none;
+    color: #0000EE; /* color azul predeterminado para los links */
+    padding: 10px 0; /* padding arriba y abajo */
+    text-align: left; /* alineación a la derecha */
 }
