@@ -1,16 +1,34 @@
 body {
-    font-family: Arial, sans-serif;
+    background-image: url("sinelefante.svg");
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-size: cover;
+    background-attachment: fixed; 
 }
 
 .card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid #bad2f8; /* Un borde rosa suave para las tarjetas */
+    border-radius: 15px; /* Hacer las esquinas de las tarjetas redondeadas */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 40%;
-    margin: auto;
+    width: 35%;
+    margin: auto auto auto 32%;
     margin-bottom: 20px;
     padding: 20px;
     text-align: center;
 }
+
+.card img {
+    border-radius: 15px; /* También puedes redondear las esquinas de las imágenes */
+}
+
+.card h3 {
+    color: #f67280; /* Un color rosa más fuerte para los títulos */
+    font-family: 'Playfair Display', serif; /* Una fuente más elegante para los títulos */
+}
+
 
 .card .content {
     display: flex;
@@ -19,7 +37,8 @@ body {
 }
 
 .card img {
-    width: 40%;
+    margin-top: 5%;
+    width: 35%;
     height: auto;
 }
 
@@ -63,3 +82,95 @@ body {
     padding: 10px 0; /* padding arriba y abajo */
     text-align: left; /* alineación a la derecha */
 }
+#elephant {
+    position: fixed;
+    right: 20px; /* Ajusta la posición derecha según tus necesidades */
+    top: 58%; /* Ajusta la posición vertical según tus necesidades */
+ /* Ajusta el valor de scale según tus necesidades */
+    transition: transform 0.3s ease;
+    width: 25%;
+
+}
+
+.button-55 {
+border: 2px solid #bad2f8; 
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+  
+  
+.button-56 {
+    border: 2px solid #f6727ba5; 
+      align-self: center;
+      background-color: #fff;
+      background-image: none;
+      background-position: 0 90%;
+      background-repeat: repeat no-repeat;
+      background-size: 4px 3px;
+      border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+      border-style: solid;
+      border-width: 2px;
+      box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+      box-sizing: border-box;
+      color: #41403e;
+      cursor: pointer;
+      display: inline-block;
+      font-family: Neucha, sans-serif;
+      font-size: 1rem;
+      line-height: 23px;
+      outline: none;
+      padding: .75rem;
+      text-decoration: none;
+      transition: all 235ms ease-in-out;
+      border-bottom-left-radius: 15px 255px;
+      border-bottom-right-radius: 225px 15px;
+      border-top-left-radius: 255px 15px;
+      border-top-right-radius: 15px 225px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    .button-56:hover {
+      box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+      transform: translate3d(0, 2px, 0);
+    }
+    
+    .button-56:focus {
+      box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+    }

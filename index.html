@@ -1,37 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reservar Evento</title>
+    <title>Baby Shower Regalos</title>
+    <link rel="stylesheet" href="style.css" >
 </head>
 <body>
-    <button id="reserveButton">Reservar</button>
+    <h2 class = "title" style="text-align:center">Regalos disponibles para el Baby Shower</h2>
 
-    <script>
-    document.getElementById("reserveButton").addEventListener("click", function() {
-        fetch('https://us-central1-responsive-sun-371200.cloudfunctions.net/function-4')
-            .then(response => {
-                if (!response.ok) throw new Error("Error al reservar evento");
-                return response.blob();
-            })
-            .then(blob => {
-                // Crear un objeto URL para el blob
-                const url = window.URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'evento.ics');
+    <div id="cardsContainer"></div>
+    <img id="elephant" src="elephant.png" alt="Elephant">
 
-                // Agregar el enlace al DOM y hacer clic en él
-                document.body.appendChild(link);
-                link.click();
-
-                // Eliminar el enlace después de descargar el archivo
-                document.body.removeChild(link);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Hubo un error al tratar de reservar el evento. Por favor, intenta nuevamente.");
-            });
-    });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
+
