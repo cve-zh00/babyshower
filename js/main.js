@@ -33,6 +33,7 @@ function fetchProducts() {
         };
         console.log(window.innerWidth)
         if (window.innerWidth < 600) {
+            
             img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefantemobile.svg';
         }else{
             img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefante.svg';
@@ -92,7 +93,25 @@ function createCards(productos) {
             linksDiv.style.display = "none";
         };
         linksDiv.appendChild(backButton);
-
+        if (producto.titulo == "Fular de apego") {
+            var disclaimer = document.createElement("p");
+            disclaimer.innerText = "** Mi polola dice que prefiere el color mostaza.";
+            textContent.appendChild(disclaimer);
+        } else if (producto.titulo == "Pañales Emu Baby talla G") {
+            var disclaimer = document.createElement("p");
+            disclaimer.innerText = "** Les pedimos que los pañales sean de la marca Emu Baby por favor. ";
+            /* le añadimos un link a disclaimer */
+            var a = document.createElement("a");
+            a.href = "https://www.sernac.cl/portal/604/w3-article-58674.html";
+            a.innerText = "Enterate el por qué";
+            /* eliminamos el formato de link */
+            a.className = "";
+            a.style.color = "black";
+            /* eliminamos el subrayado */
+            
+            disclaimer.appendChild(a);
+            textContent.appendChild(disclaimer);
+        }
         var showLinksButton = document.createElement("button");
         showLinksButton.innerText = "Mostrar Links";
         showLinksButton.className = "button-base button-55";
@@ -102,7 +121,7 @@ function createCards(productos) {
             linksDiv.style.display = "block";
         };
         textContent.appendChild(showLinksButton);
-
+        
         var buyproductButton = document.createElement("button");
         buyproductButton.innerText = "Compré este regalo";
         buyproductButton.className = "button-base button-56";
