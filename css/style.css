@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://storage.googleapis.com/imagenbabe/images/sinelefante.svg");
+    visibility: hidden;
     background-repeat: no-repeat;
     background-position: center center; 
     background-size: cover;
