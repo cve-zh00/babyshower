@@ -32,7 +32,7 @@ function fetchProducts() {
             document.body.style.visibility = "visible";
         };
         console.log(window.innerWidth)
-        if (window.innerWidth < 1000) {
+        if (window.innerWidth < 600) {
             img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefantemobile.svg';
         }else{
             img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefante.svg';
