@@ -23,12 +23,20 @@ function fetchProducts() {
             title.innerText = "Regalos disponibles para el Baby Shower"
             var img = new Image();
             img.onload = function() {
-            document.body.style.backgroundImage = 'url("https://storage.googleapis.com/imagenbabe/images/sinelefante.svg")';
-            // Mostrar el contenido de la página una vez que la imagen se haya cargado
+            if (window.innerWidth < 600) {
+                document.body.style.backgroundImage = 'url("https://storage.googleapis.com/imagenbabe/images/sinelefantemobile.svg")';
+            } else {
+                document.body.style.backgroundImage = 'url("https://storage.googleapis.com/imagenbabe/images/sinelefante.svg")';
+            }
+                // Mostrar el contenido de la página una vez que la imagen se haya cargado
             document.body.style.visibility = "visible";
         };
-        img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefante.svg';
-        }
+        console.log(window.innerWidth)
+        if (window.innerWidth < 1000) {
+            img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefantemobile.svg';
+        }else{
+            img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefante.svg';
+        }}
         
         )
         .catch(error => console.log('error', error));
