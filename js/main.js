@@ -45,13 +45,15 @@ function createCards(productos) {
         h3.innerText = producto.titulo;
         textContent.appendChild(h3);
 
-        var p = document.createElement("p");
-        p.innerText = "Presiona aquí para ver los lugares sugeridos para la compra";
-        textContent.appendChild(p);
+        
+       
 
         var linksDiv = document.createElement("div");
         linksDiv.id = 'links_' + producto.titulo;
         linksDiv.style.display = "none";
+        var disclaimer_links = document.createElement("p");
+        disclaimer_links.innerText = "Los links son solo sugerencias, puedes comprar el producto en cualquier tienda de tu preferencia";
+        linksDiv.appendChild(disclaimer_links);
         producto.links.forEach(link => {
             var a = document.createElement("a");
             a.href = link;
@@ -75,7 +77,7 @@ function createCards(productos) {
 
         var showLinksButton = document.createElement("button");
         showLinksButton.innerText = "Mostrar Links";
-        showLinksButton.className = "button-55";
+        showLinksButton.className = "button-base button-55";
         showLinksButton.role = "button";
         showLinksButton.onclick = function() { 
             textContent.style.display = "none";
@@ -85,7 +87,7 @@ function createCards(productos) {
 
         var buyproductButton = document.createElement("button");
         buyproductButton.innerText = "Compré este regalo";
-        buyproductButton.className = "button-56";
+        buyproductButton.className = "button-base button-56";
         buyproductButton.role = "button";
         
         textContent.appendChild(buyproductButton);
