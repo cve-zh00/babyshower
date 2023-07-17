@@ -35,7 +35,7 @@ function createCards(productos) {
         content.className = "content";
 
         var img = document.createElement("img");
-        img.src = "/images/" + producto.imagen;
+        img.src = "https://storage.googleapis.com/imagenbabe/images/" + producto.imagen;
         content.appendChild(img);
 
         var textContent = document.createElement("div");

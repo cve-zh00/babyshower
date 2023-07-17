@@ -47,7 +47,7 @@
     margin-top: 5%;
 }
 body {
-    background-image: url("/images/background.svg");
+    background-image: url("https://storage.googleapis.com/imagenbabe/images/background.svg");
     background-repeat: no-repeat;
     background-position: center center; 
     background-size: cover;
@@ -71,7 +71,7 @@ h2{
 
     
     body{
-        background-image: url("/images/background_phone.svg");
+        background-image: url("https://storage.googleapis.com/imagenbabe/images/background_phone.svg");
         background-repeat: no-repeat;
         background-position: center center; 
         background-size: cover;
@@ -84,6 +84,46 @@ h2{
     }
     .buttons
     {
+        
         margin-top: 2%;
     }
+    .button-74, .button-75 {
+        top: 50%;
+        left: 50%;
+        background-color: #CAEAFF;
+        border: 2px solid #422800;
+        border-radius: 30px;
+        box-shadow: #422800 4px 4px 0 0;
+        color: #422800;
+        cursor: pointer;
+        display: block;
+        font-weight: 600;
+        font-size: 18px;
+        padding: 0 18px;
+        line-height: 50px;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        margin: 15px auto; /* Centers the button and adds 10px margin-top and margin-bottom */
+        width: 70%; /* Ensures button fills the container */
+    
+    }
+
+    .button-74:hover, .button-75:hover {
+    background-color: #fff;
+    }
+
+    .button-74:active, .button-75:active {
+        box-shadow: #422800 2px 2px 0 0;
+        transform: translate(2px, 2px);
+    }
+
+
+    .button-75 {
+        background-color: #FFCBD0
+    }
+    
 }
+
