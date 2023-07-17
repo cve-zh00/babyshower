@@ -1,7 +1,7 @@
 .button-74, .button-75 {
     top: 50%;
     left: 50%;
-    background-color: #3ca6f7;
+    background-color: #CAEAFF;
     border: 2px solid #422800;
     border-radius: 30px;
     box-shadow: #422800 4px 4px 0 0;
@@ -19,6 +19,7 @@
     touch-action: manipulation;
     margin: 15px auto; /* Centers the button and adds 10px margin-top and margin-bottom */
     width: 20%; /* Ensures button fills the container */
+
 }
 
 .button-74:hover, .button-75:hover {
@@ -30,23 +31,12 @@
     transform: translate(2px, 2px);
 }
 
-@media (max-width: 768px) {
-    .button-74, .button-75 {
-        min-width: 120px;
-        padding: 0 25px;
-        display: inline-block;
-        width: auto; /* Reset the width */
-        margin: 10px; /* Adds margin all around the buttons */
-    }
-}
 
 .button-75 {
-    background-color: #ffaab2;
+    background-color: #FFCBD0
 }
 
-.button-75:hover {
-    background-color: #f7ced2;
-}
+
 
 .buttons {
     position: relative;
@@ -65,11 +55,13 @@ body {
 }
 
 .title{
-    margin-top: 12%;
+    margin-top: 6%;
+    padding: 2%;
     text-align: center;
 }
 h1{
     font-style: italic;
+    font-size: 2.5em;
 }
 h2{
     font-style: italic;
@@ -84,5 +76,14 @@ h2{
         background-position: center center; 
         background-size: cover;
         background-attachment: fixed; 
+    }
+    .title{
+        margin-top: 0%;
+        padding:8% 8% 4% 8%;
+        text-align: center;
+    }
+    .buttons
+    {
+        margin-top: 2%;
     }
 }
