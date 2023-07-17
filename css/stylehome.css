@@ -47,7 +47,7 @@
     margin-top: 5%;
 }
 body {
-    background-image: url("background.svg");
+    background-image: url("/images/background.svg");
     background-repeat: no-repeat;
     background-position: center center; 
     background-size: cover;
@@ -71,7 +71,7 @@ h2{
 
     
     body{
-        background-image: url("background_phone.svg");
+        background-image: url("/images/background_phone.svg");
         background-repeat: no-repeat;
         background-position: center center; 
         background-size: cover;

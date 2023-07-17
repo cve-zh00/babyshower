@@ -35,7 +35,7 @@ function createCards(productos) {
         content.className = "content";
 
         var img = document.createElement("img");
-        img.src = producto.imagen;
+        img.src = "/images/" + producto.imagen;
         content.appendChild(img);
 
         var textContent = document.createElement("div");
@@ -97,25 +97,26 @@ function createCards(productos) {
         cardsContainer.appendChild(card);
     });
 }
-// Obtener la referencia a la imagen del elefante
-// Obtener la referencia a la imagen del elefante
-// Obtener la referencia a la imagen del elefante
-var elephantImage = document.getElementById("elephant");
+
+function elephant() {
+    var elephantImage = document.getElementById("elephant");
 
 // Definir la velocidad de desplazamiento (ajusta este valor según tus necesidades)
-var scrollSpeed = 0.55; // Un valor menor disminuirá la velocidad
+    var scrollSpeed = 0.55; // Un valor menor disminuirá la velocidad
 
 // Manejar el evento de desplazamiento (scroll)
-window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function() {
   // Calcular la cantidad de desplazamiento vertical
-  var scrollY = window.scrollY || window.pageYOffset;
+    var scrollY = window.scrollY || window.pageYOffset;
 
   // Ajustar la posición vertical del elefante según el desplazamiento y la velocidad
-  var displacement = -scrollY * scrollSpeed;
-  elephantImage.style.transform = "translate3d(0, " + displacement + "px, 0)";
-});
+    var displacement = -scrollY * scrollSpeed;
+    elephantImage.style.transform = "translate3d(0, " + displacement + "px, 0)";
+    });
+}
 
 
 
 // Iniciamos la solicitud
 document.addEventListener('DOMContentLoaded', fetchProducts);
+document.addEventListener('DOMContentLoaded', elephant);
