@@ -17,46 +17,40 @@ h4{
 .card {
     position: relative;
     background: rgba(255, 255, 255, 0.8);
-    border: 2px solid #bad2f8; /* Un borde rosa suave para las tarjetas */
-    border-radius: 15px; /* Hacer las esquinas de las tarjetas redondeadas */
+    border: 2px solid #bad2f8;
+    border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 35%;
-    margin: auto auto auto 32%;
-    margin-bottom: 20px;
+    width: 90%;
+    margin: 20px auto;
     padding: 20px;
     text-align: center;
 }
 
-.card img {
-    border-radius: 15px; /* También puedes redondear las esquinas de las imágenes */
-}
-
 .card h3 {
-    /* aumentar el tamaño de la fuente */
     font-size: 1.5rem;
     text-align: center;
-    color: #f67280; /* Un color rosa más fuerte para los títulos */
-    font-family: 'Playfair Display', serif; /* Una fuente más elegante para los títulos */
+    color: #f67280;
+    font-family: 'Playfair Display', serif;
 }
-
 
 .card .content {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .card img {
     margin-top: 5%;
-    width: 35%;
+    width: 100%;
     height: auto;
+    border-radius: 15px; 
 }
 
 .text-content {
-    padding: 0px 20px 0px 20px;
+    padding: 20px;
     text-align: left;
-    flex: 1;
 }
 
 .text-content p, .text-content button {
@@ -72,30 +66,28 @@ h4{
     transition: opacity 0.5s ease;
 }
 
-
 .link:hover {
-    color: #551A8B; /* cambiar el color al pasar el cursor por encima */
+    color: #551A8B;
 }
 
 .link:active {
-    color: #EE0000; /* cambiar el color al hacer clic */
+    color: #EE0000;
 }
+
 .link{
     display: block;
     text-decoration: none;
-    /* quitar subrayado de los enlaces */
-    color: #000000; /* color del texto */
-    padding: 10px 0; /* padding arriba y abajo */
-    text-align: left; /* alineación a la derecha */
+    color: #000000;
+    padding: 10px 0;
+    text-align: left;
 }
+
 #elephant {
     position: fixed;
-    right: 20px; /* Ajusta la posición derecha según tus necesidades */
-    top: 58%; /* Ajusta la posición vertical según tus necesidades */
- /* Ajusta el valor de scale según tus necesidades */
+    right: 20px;
+    top: 58%;
     transition: transform 0.3s ease;
-    width: 25%;
-
+    width: 100%;
 }
 
 .button-base {
@@ -146,16 +138,35 @@ h4{
     border: 2px solid #f6727ba5; 
 }
 
-@media screen and (max-width: 600px) {
+/* Media queries for responsive design */
+@media (min-width: 600px) {
     .card {
-        width: 90%;
+        width: 60%;
     }
-    h4{
-        margin-top: 4px;
-        text-align: center;
-        font-size: 1.3rem;
-        font-style: italic;
-        padding: 0 10% 0 10%;
-        
+
+    .card .content {
+        flex-direction: row;
+    }
+
+    .card img {
+        width: 50%;
+    }
+
+    #elephant {
+        width: 30%;
+    }
+}
+
+@media (min-width: 900px) {
+    .card {
+        width: 60%;
+    }
+
+    .card img {
+        width: 35%;
+    }
+
+    #elephant {
+        width: 25%;
     }
 }
