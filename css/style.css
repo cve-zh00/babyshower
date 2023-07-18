@@ -5,12 +5,12 @@ body {
     background-size: cover;
     background-attachment: fixed; 
 }
+
 h4{
     margin-top: 4px;
     padding: 0 25% 1% 25%;
     text-align: center;
     font-size: 1.3rem;
-    
     font-style: italic;
 }
 
@@ -73,12 +73,6 @@ h4{
 }
 
 
-
-@media screen and (max-width: 600px) {
-    .card {
-        width: 90%;
-    }
-}
 .link:hover {
     color: #551A8B; /* cambiar el color al pasar el cursor por encima */
 }
@@ -150,4 +144,18 @@ h4{
 
 .button-56 {
     border: 2px solid #f6727ba5; 
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        width: 90%;
+    }
+    h4{
+        margin-top: 4px;
+        text-align: center;
+        font-size: 1.3rem;
+        font-style: italic;
+        padding: 0 10% 0 10%;
+        
+    }
 }
