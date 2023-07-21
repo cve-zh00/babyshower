@@ -87,7 +87,7 @@
                         </label>
                     </div>
                     <br>
-                    <div id="restrictionDetail" style="display: none;">
+                    <div id="restrictionDetailCompany" style="display: none;">
                         <label for="details">Indicanos cuales:</label>
                         <br>
                         <input type="text" id="details">
@@ -106,10 +106,10 @@
                         placeholder="Ingrese el nombre del acompañante">
                 </div>
 
-                <label for="restrictions-detail">¿Tiene restricciones alimentarias?</label>
+                <label for="restrictions-company">¿Tiene restricciones alimentarias?</label>
                 <br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="restrictions-company" id="noRestrictions"
+                    <input class="form-check-input" type="radio" name="restrictions-company" id="noRestrictionsCompany"
                         value="no" checked onchange="showInputCompany()">
                     <label class="form-check-label" for="noRestrictions">
                         No
@@ -150,7 +150,7 @@
         function showInput() {
             var detailDiv = document.getElementById('restrictionDetail');
             var yesRestrictionsRadio = document.getElementById('yesRestrictions');
-            console.log(yesRestrictionsRadio.checked + "1");
+            
             if (yesRestrictionsRadio.checked) {
                 detailDiv.style.display = 'block';
             } else {
@@ -206,9 +206,8 @@
                 detallesAcompanante: detallesAcompanante
 
             };
-            console.log(formData);
+            post(formData);
             // Muestra el JSON
-
         }
 
         function validInformation() {
@@ -253,6 +252,7 @@
                 nombre.classList.add("is-valid");
             }
         }
+        
         // Añade el event listener a a forma
         document.querySelector('form').addEventListener('submit', onSubmitForm);
         document.getElementById('nombre').addEventListener('change', validInformation);
