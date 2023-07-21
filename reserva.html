@@ -186,9 +186,12 @@
                 a.download = 'baby_shower.ics';
                 document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
                 a.click();
-                a.remove();  //afterwards we remove the element again         
+                a.remove();
+                window.location.href = "thanks.html";  //afterwards we remove the element again         
             });
-            window.location.href = "thanks.html";
+            
+
+            
 
             //vamos a la pagina de gracias
 
