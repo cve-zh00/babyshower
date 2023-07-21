@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,73 +11,32 @@
 </head>
 
 
-    <body>
-        <div class="container py-5">
-          <form>
+<body>
+    <div class="container py-5">
+        <form>
             <h1 class="mb-4">Confirmación de asistencia para el Baby Shower</h1>
-      
+
             <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" onchange = "validInformation()"crequired>
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
             </div>
             <br>
-      
-            
+
+
             <div class="form-group">
-            <label for="restrictions">¿Tiene restricciones alimentarias?</label>
-            <br>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="restrictions" id="noRestrictions" value = "no" checked onchange="showInput()">
-                <label class="form-check-label" for="noRestrictions">
-                    No
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="restrictions" id="yesRestrictions" value = "si" onchange="showInput()">
-                <label class="form-check-label" for="yesRestrictions">
-                    Sí
-                </label>
-            </div>
-            <br>
-            <div id="restrictionDetail" style="display: none;">
-                <label for="details">Indicanos cuales:</label>
+                <label for="restrictions">¿Tiene restricciones alimentarias?</label>
                 <br>
-                <input type="text" id="details">
-            </div>
-            
-        </div>
-              <label class="form-check-label" for="estacionamiento">¿Necesitas estacionamiento?</label>
-              <br>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estacionamiento" id="estacionamiento" value = "no" checked >
-                <label class="form-check-label" for="noestacionamiento">
-                    No
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="estacionamiento" id="yesestacionamiento" value = "si">
-                <label class="form-check-label" for="yesestacionamiento">
-                    Sí
-                </label>
-            </div>
-            
-            <br>
-            <div class="form-group">
-                <br>
-              <label class="form-check-label" for="acompanante">¿Vas a acompañado?</label>
-              
-              <div>
-                
-                
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="company" id="nocompany" value = "no" checked onchange="mostrarAcompanante()">
-                    <label class="form-check-label" for="yescompany">
+                    <input class="form-check-input" type="radio" name="restrictions" id="noRestrictions" value="no"
+                        checked onchange="showInput()">
+                    <label class="form-check-label" for="noRestrictions">
                         No
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="company" id="yescompany" value = "si" onchange="mostrarAcompanante()">
-                    <label class="form-check-label" for="yescompany">
+                    <input class="form-check-input" type="radio" name="restrictions" id="yesRestrictions" value="si"
+                        onchange="showInput()">
+                    <label class="form-check-label" for="yesRestrictions">
                         Sí
                     </label>
                 </div>
@@ -86,116 +46,218 @@
                     <br>
                     <input type="text" id="details">
                 </div>
+
+            </div>
+            <label class="form-check-label" for="estacionamiento">¿Necesitas estacionamiento?</label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estacionamiento" id="estacionamiento" value="no"
+                    checked>
+                <label class="form-check-label" for="noestacionamiento">
+                    No
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estacionamiento" id="yesestacionamiento" value="si">
+                <label class="form-check-label" for="yesestacionamiento">
+                    Sí
+                </label>
             </div>
 
-             
+            <br>
+            <div class="form-group">
+                <br>
+                <label class="form-check-label" for="acompanante">¿Vas a acompañado?</label>
+
+                <div>
+
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="company" id="nocompany" value="no" checked
+                            onchange="mostrarAcompanante()">
+                        <label class="form-check-label" for="yescompany">
+                            No
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="company" id="yescompany" value="si"
+                            onchange="mostrarAcompanante()">
+                        <label class="form-check-label" for="yescompany">
+                            Sí
+                        </label>
+                    </div>
+                    <br>
+                    <div id="restrictionDetail" style="display: none;">
+                        <label for="details">Indicanos cuales:</label>
+                        <br>
+                        <input type="text" id="details">
+                    </div>
+                </div>
+
+
             </div>
             <br>
             <div id="datos-acompanante" style="display: none;">
-              <h2 class="mb-4">Información del acompañante</h2>
-      
-              <div class="form-group">
-                <label for="nombre-acompanante" aria-required="true">Nombre del acompañante</label>
-                <input type="text" class="form-control" id="nombre-acompanante" placeholder="Ingrese el nombre del acompañante">
-              </div>
-           
-              <label for="restrictions-detail">¿Tiene restricciones alimentarias?</label>
-              <br>
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="restrictions-company" id="noRestrictions" value = "si" checked onchange="showInputCompany()">
-                  <label class="form-check-label" for="noRestrictions">
-                      No
-                  </label>
-              </div>
-              <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="restrictions-company" id="yesRestrictionsCompany "value= "no" onchange="showInputCompany()">
-                  <label class="form-check-label" for="yesRestrictions">
-                      Sí
-                  </label>
-              </div>
-              <br>
-              <div id="restrictionDetailCompany" style="display: none;">
-                  <label for="details">Indicanos cuales:</label>
-                  <br>
-                  <input type="text" id="details">
-              </div>
-              <br>
+                <h2 class="mb-4">Información del acompañante</h2>
 
-              <br>
-              <br>
+                <div class="form-group">
+                    <label for="nombre-acompanante" aria-required="true">Nombre del acompañante</label>
+                    <input type="text" class="form-control" id="nombre-acompanante"
+                        placeholder="Ingrese el nombre del acompañante">
+                </div>
+
+                <label for="restrictions-detail">¿Tiene restricciones alimentarias?</label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="restrictions-company" id="noRestrictions"
+                        value="no" checked onchange="showInputCompany()">
+                    <label class="form-check-label" for="noRestrictions">
+                        No
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="restrictions-company"
+                        id="yesRestrictionsCompany " value="si" onchange="showInputCompany()">
+                    <label class="form-check-label" for="yesRestrictions">
+                        Sí
+                    </label>
+                </div>
+                <br>
+                <div id="restrictionDetailCompany" style="display: none;">
+                    <label for="details">Indicanos cuales:</label>
+                    <br>
+                    <input type="text" id="details">
+                </div>
+                <br>
+            </div>
+
             <button type="submit" class="btn btn-primary">Confirmar asistencia</button>
-          </form>
-        </div>
-      
-        <script>
-          function mostrarAcompanante() {
+
+        </form>
+    </div>
+
+    <script>
+        function mostrarAcompanante() {
             var checkBox = document.getElementById("yescompany");
             var text = document.getElementById("datos-acompanante");
             console.log(checkBox.checked)
-            if (checkBox.checked == true){
-              text.style.display = "block";
+            if (checkBox.checked == true) {
+                text.style.display = "block";
             } else {
-               text.style.display = "none";
+                text.style.display = "none";
             }
-          }
-          function showInput() {
-    var detailDiv = document.getElementById('restrictionDetail');
-    var yesRestrictionsRadio = document.getElementById('yesRestrictions');
-    console.log(yesRestrictionsRadio.checked + "1");
-    if (yesRestrictionsRadio.checked) {
-        detailDiv.style.display = 'block';
-    } else {
-        detailDiv.style.display = 'none';
-    }
-}
+        }
+        function showInput() {
+            var detailDiv = document.getElementById('restrictionDetail');
+            var yesRestrictionsRadio = document.getElementById('yesRestrictions');
+            console.log(yesRestrictionsRadio.checked + "1");
+            if (yesRestrictionsRadio.checked) {
+                detailDiv.style.display = 'block';
+            } else {
+                detailDiv.style.display = 'none';
+            }
+        }
 
-function showInputCompany() {
-    var detailDiv = document.getElementById('restrictionDetailCompany');
-    var yesRestrictionsRadio = document.getElementById('yesRestrictionsCompany');
-    console.log(yesRestrictionsRadio.checked + "1");
-    if (yesRestrictionsRadio.checked) {
-        detailDiv.style.display = 'block';
-    } else {
-        detailDiv.style.display = 'none';
-    }
-}
+        function showInputCompany() {
+            var detailDiv = document.getElementById('restrictionDetailCompany');
+            var yesRestrictionsRadio = document.getElementById('yesRestrictionsCompany');
+            console.log(yesRestrictionsRadio.checked + "1");
+            if (yesRestrictionsRadio.checked) {
+                detailDiv.style.display = 'block';
+            } else {
+                detailDiv.style.display = 'none';
+            }
+        }
 
-function onSubmitForm(event) {
-    event.preventDefault();
+        function post(data){
+            var url = "https://us-central1-responsive-sun-371200.cloudfunctions.net/function-4"
+            // hacemos un post a la url con la data, y recibimos un ICS, que descargamos
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then(response => response.blob())
 
-    // Recopila los valores de los campos del formulario
-    var nombre = document.getElementById('nombre').value;
-    var restricciones = document.querySelector('input[name="restrictions"]:checked').value;
-    var detalles = document.getElementById('details').value;
-    var estacionamiento = document.querySelector('input[name="estacionamiento"]:checked').value;
-    // Construye un objeto JSON con los valores
-    var formData = {
-        nombre: nombre,
-        restricciones: restricciones,
-        detalles: detalles,
-        estacionamiento: estacionamiento
-    };
+        }
 
-    // Muestra el JSON
-    alert(JSON.stringify(formData));
-  }
-    
-  function validInformation(){
-    var nombre = document.getElementById('nombre').value;
-    if(nombre == ""){
-      alert("Por favor ingrese su nombre");
-    }
-  }
-  // Añade el event listener a la forma
-  document.querySelector('form').addEventListener('submit', onSubmitForm);
+        function onSubmitForm(event) {
+            event.preventDefault();
 
-        </script>
-      </body>
-      </html>
+            // Recopila los valores de los campos del formulario
+            var nombre = document.getElementById('nombre').value;
+            var restricciones = document.querySelector('input[name="restrictions"]:checked').value;
+            var detalles = document.getElementById('details').value;
+            var estacionamiento = document.querySelector('input[name="estacionamiento"]:checked').value;
+            var acompanante = document.querySelector('input[name="company"]:checked').value;
+            var nombreAcompanante = document.getElementById('nombre-acompanante').value;
+            var restriccionesAcompanante = document.querySelector('input[name="restrictions-company"]:checked').value;
+            var detallesAcompanante = document.getElementById('details').value;
+            // Construye un objeto JSON con los valores
+            var formData = {
+                nombre: nombre,
+                restricciones: restricciones,
+                detalles: detalles,
+                estacionamiento: estacionamiento,
+                acompanante: acompanante,
+                nombreAcompanante: nombreAcompanante,
+                restriccionesAcompanante: restriccionesAcompanante,
+                detallesAcompanante: detallesAcompanante
+
+            };
+            console.log(formData);
+            // Muestra el JSON
+
+        }
+
+        function validInformation() {
+            var nombre = document.getElementById('nombre');
+            var value = nombre.value;
+
+            //imprimimos la clase del input 
+            if (value == "" && nombre.classList.contains("is-invalid") == false) {
+                if (nombre.classList.contains("is-valid")) {
+                    nombre.classList.remove("is-valid");
+
+                }
+                nombre.classList.add("is-invalid");
 
 
+            } else if (value != "" && nombre.classList.contains("is-valid") == false) {
+                if (nombre.classList.contains("is-invalid")) {
+                    nombre.classList.remove("is-invalid");
+
+                }
+                nombre.classList.add("is-valid");
+            }
+        }
+        function validInformationCompany() {
+            var nombre = document.getElementById('nombre-acompanante');
+            var value = nombre.value;
+
+            //imprimimos la clase del input 
+            if (value == "" && nombre.classList.contains("is-invalid") == false) {
+                if (nombre.classList.contains("is-valid")) {
+                    nombre.classList.remove("is-valid");
+
+                }
+                nombre.classList.add("is-invalid");
 
 
+            } else if (value != "" && nombre.classList.contains("is-valid") == false) {
+                if (nombre.classList.contains("is-invalid")) {
+                    nombre.classList.remove("is-invalid");
 
+                }
+                nombre.classList.add("is-valid");
+            }
+        }
+        // Añade el event listener a a forma
+        document.querySelector('form').addEventListener('submit', onSubmitForm);
+        document.getElementById('nombre').addEventListener('change', validInformation);
+        document.getElementById('nombre-acompanante').addEventListener('change', validInformationCompany);
+    </script>
+</body>
 
-    
+</html>
