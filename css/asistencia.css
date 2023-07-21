@@ -1,0 +1,25 @@
+
+body {
+    background-image: url("https://storage.googleapis.com/imagenbabe/images/background.svg");
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+
+
+@media screen and (max-width: 600px) {
+
+    
+    body{
+        background-image: url("https://storage.googleapis.com/imagenbabe/images/background_phone.svg");
+        background-repeat: no-repeat;
+        background-position: center center; 
+        background-size: cover;
+        background-attachment: fixed; 
+    }
+    
+    
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/asistencia.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Reserva</title>
+</head>
+
+
+    <body>
+        <div class="container py-5">
+          <form>
+            <h1 class="mb-4">Confirmación de asistencia para el Baby Shower</h1>
+      
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control is-valid" id="nombre" placeholder="Ingrese su nombre" required>
+            </div>
+      
+            <div class="form-group">
+              <label for="restricciones">Restricciones alimentarias</label>
+              <input type="text" class="form-control" id="restricciones" placeholder="Ingrese sus restricciones alimentarias" required>
+            </div>
+      
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="estacionamiento">
+              <label class="form-check-label" for="estacionamiento">¿Necesitas estacionamiento?</label>
+            </div>
+      
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="acompanante" onclick="mostrarAcompanante()">
+              <label class="form-check-label" for="acompanante">¿Vas a acompañado?</label>
+            </div>
+      
+            <div id="datos-acompanante" style="display: none;">
+              <h2 class="mb-4">Información del acompañante</h2>
+      
+              <div class="form-group">
+                <label for="nombre-acompanante" aria-required="true">Nombre del acompañante</label>
+                <input type="text" class="form-control" id="nombre-acompanante" placeholder="Ingrese el nombre del acompañante">
+              </div>
+      
+              <div class="form-group">
+                <label for="restricciones-acompanante">Restricciones alimentarias del acompañante</label>
+                <input type="text" class="form-control" id="restricciones-acompanante" placeholder="Ingrese las restricciones alimentarias del acompañante">
+              </div>
+            </div>
+      
+            <button type="submit" class="btn btn-primary">Confirmar asistencia</button>
+          </form>
+        </div>
+      
+        <script>
+          function mostrarAcompanante() {
+            var checkBox = document.getElementById("acompanante");
+            var text = document.getElementById("datos-acompanante");
+            if (checkBox.checked == true){
+              text.style.display = "block";
+            } else {
+               text.style.display = "none";
+            }
+          }
+        </script>
+      </body>
+      </html>
+
+
+
+
+
+
+    
