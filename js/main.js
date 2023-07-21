@@ -31,9 +31,8 @@ function fetchProducts() {
                 // Mostrar el contenido de la página una vez que la imagen se haya cargado
             document.body.style.visibility = "visible";
         };
-        console.log(window.innerWidth)
+        
         if (window.innerWidth < 600) {
-            
             img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefantemobile.svg';
         }else{
             img.src = 'https://storage.googleapis.com/imagenbabe/images/sinelefante.svg';
@@ -42,117 +41,177 @@ function fetchProducts() {
         )
         .catch(error => console.log('error', error));
 }
+function createElement(type, className) {
+  var element = document.createElement(type);
+  if (className) element.className = className;
+  return element;
+}
 
-// Función que crea las tarjetas de productos
+function createImage(producto) {
+  var img = createElement("img");
+  img.src = "https://storage.googleapis.com/imagenbabe/images/" + producto.imagen;
+  return img;
+}
+
+function createTitle(producto) {
+  var h3 = createElement("h3");
+  h3.innerText = producto.titulo;
+  return h3;
+}
+
+function createButton(text, className, onClickFunc) {
+  var button = createElement("button", className);
+  button.innerText = text;
+  button.role = "button";
+  button.onclick = onClickFunc;
+  return button;
+}
+
+function createDisclaimer(producto) {
+  var disclaimer = createElement("p");
+  var a, disclaimerText;
+
+  if (producto.titulo == "Fular de apego") {
+    disclaimerText = "** Mi polola dice que prefiere el color mostaza.";
+    a = createElement("a");
+    disclaimer.appendChild(a);
+    return disclaimer
+    
+  } else if (producto.titulo == "Pañales Emu Baby talla G") {
+    disclaimerText = "** Les pedimos que los pañales sean de la marca Emu Baby por favor. ";
+    a = createElement("a");
+    a.href = "https://www.sernac.cl/portal/604/w3-article-58674.html";
+    a.innerText = "¿Por qué Emu baby?"
+    disclaimer.appendChild(a);
+
+    return disclaimer;
+  }else{
+    return null
+  }
+
+  
+  
+}
+
+function createProductLinks(producto) {
+  var div_back = createElement("div", "grid-b");
+  var linksDiv = createElement("div", "grid-b1");
+  div_back.id = "back_" + producto.titulo;
+  linksDiv.id = 'links_' + producto.titulo;
+  div_back.style.display = "none";
+
+  var disclaimer_links = createElement("p");
+  disclaimer_links.innerText = "Links de referencia";
+  linksDiv.appendChild(disclaimer_links);
+  var ul = createElement("ul");
+  producto.links.forEach(link => {
+    var li = createElement("li", "link");
+    var a = createElement("a");
+
+    a.href = link;
+    a.innerText = link;
+    li.appendChild(a);
+    ul.appendChild(li);
+    
+  });
+  linksDiv.appendChild(ul);
+  var div_buttons = createElement("div");
+  var backButton = createButton("Volver", "button-77", function() {
+    div_back.style.display = "none";
+    var divB1 = document.getElementById("frontal_text_"+producto.titulo);
+    divB1.style.display = "block";
+
+  });
+  div_buttons.id= "div_buttons";
+  div_buttons.appendChild(backButton);
+  
+  div_back.appendChild(linksDiv);
+  div_back.appendChild(div_buttons);
+  return div_back
+}
+
 function createCards(productos) {
-    var cardsContainer = document.getElementById("cardsContainer");
-    productos.forEach(producto => {
-        var card = document.createElement("div");
-        card.className = "card";
+  var cardsContainer = document.getElementById("cardsContainer");
+  productos.forEach(producto => {
+    var card = createElement("div", "card");
 
-        var content = document.createElement("div");
-        content.className = "content";
+    var content = createElement("div", "content");
 
-        var img = document.createElement("img");
-        img.src = "https://storage.googleapis.com/imagenbabe/images/" + producto.imagen;
-        content.appendChild(img);
+    var divA = createElement("div", "grid-a");
+    var img = createImage(producto);
+    divA.appendChild(img);
 
-        var textContent = document.createElement("div");
-        textContent.className = "text-content";
+    var divB = createElement("div", "grid-b");
+    divB.id = "frontal_text_" + producto.titulo;
+    var divB1 = createElement("div", "grid-b1");
+    var title = createTitle(producto);
+    divB1.appendChild(title);
 
-        var h3 = document.createElement("h3");
-        h3.innerText = producto.titulo;
-        textContent.appendChild(h3);
+    var divB2 = createElement("div", "grid-b2");
 
-        
-       
+    var showLinksButton = createButton("Mostrar Links", "button-74", function() {
+      divB.style.display = "none";
+      var div_back = document.getElementById("back_"+producto.titulo);
+      div_back.style.display = "flex";
+      var div_buttons = document.getElementById("div_buttons");
+      
+      div_buttons.className = "grid-b2";
 
-        var linksDiv = document.createElement("div");
-        linksDiv.id = 'links_' + producto.titulo;
-        linksDiv.style.display = "none";
-        var disclaimer_links = document.createElement("p");
-        disclaimer_links.innerText = "Los links son solo sugerencias, puedes comprar el producto en cualquier tienda de tu preferencia";
-        linksDiv.appendChild(disclaimer_links);
-        producto.links.forEach(link => {
-            var a = document.createElement("a");
-            a.href = link;
-            a.innerText = link;
-            //añadimos la clase link para que se vea como un link
-            a.className = "link";
-            var br = document.createElement("br");
-            linksDiv.appendChild(a);
-            
-            linksDiv.appendChild(br);
-        });
-
-        var backButton = document.createElement("button");
-        backButton.innerText = "Volver";
-        
-        backButton.onclick = function() { 
-            textContent.style.display = "block";
-            linksDiv.style.display = "none";
-        };
-        linksDiv.appendChild(backButton);
-        if (producto.titulo == "Fular de apego") {
-            var disclaimer = document.createElement("p");
-            disclaimer.innerText = "** Mi polola dice que prefiere el color mostaza.";
-            textContent.appendChild(disclaimer);
-        } else if (producto.titulo == "Pañales Emu Baby talla G") {
-            var disclaimer = document.createElement("p");
-            disclaimer.innerText = "** Les pedimos que los pañales sean de la marca Emu Baby por favor. ";
-            /* le añadimos un link a disclaimer */
-            var a = document.createElement("a");
-            a.href = "https://www.sernac.cl/portal/604/w3-article-58674.html";
-            a.innerText = "Enterate el por qué";
-            /* eliminamos el formato de link */
-            a.className = "";
-            a.style.color = "black";
-            /* eliminamos el subrayado */
-            
-            disclaimer.appendChild(a);
-            textContent.appendChild(disclaimer);
-        }
-        var showLinksButton = document.createElement("button");
-        showLinksButton.innerText = "Mostrar Links";
-        showLinksButton.className = "button-base button-55";
-        showLinksButton.role = "button";
-        showLinksButton.onclick = function() { 
-            textContent.style.display = "none";
-            linksDiv.style.display = "block";
-        };
-        textContent.appendChild(showLinksButton);
-        
-        var buyproductButton = document.createElement("button");
-        buyproductButton.innerText = "Compré este regalo";
-        buyproductButton.className = "button-base button-56";
-        buyproductButton.role = "button";
-        
-        textContent.appendChild(buyproductButton);
-
-        content.appendChild(textContent);
-        content.appendChild(linksDiv);
-
-        card.appendChild(content);
-        cardsContainer.appendChild(card);
     });
+    divB2.appendChild(showLinksButton);
+    var buttons_front = createElement("div", "buttons_front");
+    buttons_front.appendChild(showLinksButton);
+    
+    
+    var buyProductButton = createButton("Compré este regalo", "button-75", null);
+    buttons_front.appendChild(buyProductButton);
+    divB2.appendChild(buttons_front);
+    var disclaimer = createDisclaimer(producto);
+
+    if (disclaimer != undefined){
+      divB1.appendChild(disclaimer);
+      buttons_front.style.marginTop = "0px";
+    }
+    divB.appendChild(divB1);
+    divB.appendChild(divB2);
+
+    var linksDiv = createProductLinks(producto);
+
+    content.appendChild(linksDiv);
+    content.appendChild(divA);
+    content.appendChild(divB);
+
+    card.appendChild(content);
+    cardsContainer.appendChild(card);
+
+    // CALCULAMOS EL TAMAÑO DE LA PAGINA
+    
+    
+    
+  });
+  
+  
 }
 
 function elephant() {
-    var elephantImage = document.getElementById("elephant");
+  var elephantImage = document.getElementById("elephant");
+  // Alineamos inicialmente el elefante en la parte inferior de la ventana
+  elephantImage.style.position = 'fixed';
+  elephantImage.style.bottom = '0px';
+  elephantImage.style.right = '0px';
 
-// Definir la velocidad de desplazamiento (ajusta este valor según tus necesidades)
-    var scrollSpeed = 0.55; // Un valor menor disminuirá la velocidad
+  window.addEventListener("scroll", function() {
+      // Obtenemos la posición de scroll actual
+      var scrollY = window.scrollY || window.pageYOffset;
 
-// Manejar el evento de desplazamiento (scroll)
-    window.addEventListener("scroll", function() {
-  // Calcular la cantidad de desplazamiento vertical
-    var scrollY = window.scrollY || window.pageYOffset;
-
-  // Ajustar la posición vertical del elefante según el desplazamiento y la velocidad
-    var displacement = -scrollY * scrollSpeed;
-    elephantImage.style.transform = "translate3d(0, " + displacement + "px, 0)";
-    });
+      // Mover el elefante hacia arriba a medida que desplazamos hacia abajo
+      elephantImage.style.transform = "translateY(" + -(scrollY * 0.5) + "px)";
+  });
 }
+
+
+
+
 
 
 
