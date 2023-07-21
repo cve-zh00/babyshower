@@ -116,8 +116,7 @@
                     </label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="restrictions-company"
-                        id="yesRestrictionsCompany " value="si" onchange="showInputCompany()">
+                    <input class="form-check-input" type="radio" name="restrictions-company" id="yesRestrictionsCompany" value="si" onchange="showInputCompany()">
                     <label class="form-check-label" for="yesRestrictions">
                         Sí
                     </label>
@@ -126,7 +125,7 @@
                 <div id="restrictionDetailCompany" style="display: none;">
                     <label for="details">Indicanos cuales:</label>
                     <br>
-                    <input type="text" id="details">
+                    <input type="text" id="detailsCompany">
                 </div>
                 <br>
             </div>
@@ -140,7 +139,7 @@
         function mostrarAcompanante() {
             var checkBox = document.getElementById("yescompany");
             var text = document.getElementById("datos-acompanante");
-            console.log(checkBox.checked)
+            
             if (checkBox.checked == true) {
                 text.style.display = "block";
             } else {
@@ -161,8 +160,9 @@
         function showInputCompany() {
             var detailDiv = document.getElementById('restrictionDetailCompany');
             var yesRestrictionsRadio = document.getElementById('yesRestrictionsCompany');
-            console.log(yesRestrictionsRadio.checked + "1");
+            console.log(detailDiv);
             if (yesRestrictionsRadio.checked) {
+                console.log(true)
                 detailDiv.style.display = 'block';
             } else {
                 detailDiv.style.display = 'none';
@@ -205,7 +205,7 @@
             var acompanante = document.querySelector('input[name="company"]:checked').value;
             var nombreAcompanante = document.getElementById('nombre-acompanante').value;
             var restriccionesAcompanante = document.querySelector('input[name="restrictions-company"]:checked').value;
-            var detallesAcompanante = document.getElementById('details').value;
+            var detallesAcompanante = document.getElementById('detailsCompany').value;
             // Construye un objeto JSON con los valores
             var formData = {
                 nombre: nombre,
