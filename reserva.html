@@ -17,24 +17,80 @@
       
             <div class="form-group">
               <label for="nombre">Nombre</label>
-              <input type="text" class="form-control is-valid" id="nombre" placeholder="Ingrese su nombre" required>
+              <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" onchange = "validInformation()"crequired>
             </div>
+            <br>
       
+            
             <div class="form-group">
-              <label for="restricciones">Restricciones alimentarias</label>
-              <input type="text" class="form-control" id="restricciones" placeholder="Ingrese sus restricciones alimentarias" required>
+            <label for="restrictions">¿Tiene restricciones alimentarias?</label>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="restrictions" id="noRestrictions" value = "no" checked onchange="showInput()">
+                <label class="form-check-label" for="noRestrictions">
+                    No
+                </label>
             </div>
-      
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="estacionamiento">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="restrictions" id="yesRestrictions" value = "si" onchange="showInput()">
+                <label class="form-check-label" for="yesRestrictions">
+                    Sí
+                </label>
+            </div>
+            <br>
+            <div id="restrictionDetail" style="display: none;">
+                <label for="details">Indicanos cuales:</label>
+                <br>
+                <input type="text" id="details">
+            </div>
+            
+        </div>
               <label class="form-check-label" for="estacionamiento">¿Necesitas estacionamiento?</label>
+              <br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estacionamiento" id="estacionamiento" value = "no" checked >
+                <label class="form-check-label" for="noestacionamiento">
+                    No
+                </label>
             </div>
-      
-            <div class="form-check mb-3">
-              <input class="form-check-input" type="checkbox" id="acompanante" onclick="mostrarAcompanante()">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="estacionamiento" id="yesestacionamiento" value = "si">
+                <label class="form-check-label" for="yesestacionamiento">
+                    Sí
+                </label>
+            </div>
+            
+            <br>
+            <div class="form-group">
+                <br>
               <label class="form-check-label" for="acompanante">¿Vas a acompañado?</label>
+              
+              <div>
+                
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="company" id="nocompany" value = "no" checked onchange="mostrarAcompanante()">
+                    <label class="form-check-label" for="yescompany">
+                        No
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="company" id="yescompany" value = "si" onchange="mostrarAcompanante()">
+                    <label class="form-check-label" for="yescompany">
+                        Sí
+                    </label>
+                </div>
+                <br>
+                <div id="restrictionDetail" style="display: none;">
+                    <label for="details">Indicanos cuales:</label>
+                    <br>
+                    <input type="text" id="details">
+                </div>
             </div>
-      
+
+             
+            </div>
+            <br>
             <div id="datos-acompanante" style="display: none;">
               <h2 class="mb-4">Información del acompañante</h2>
       
@@ -42,27 +98,97 @@
                 <label for="nombre-acompanante" aria-required="true">Nombre del acompañante</label>
                 <input type="text" class="form-control" id="nombre-acompanante" placeholder="Ingrese el nombre del acompañante">
               </div>
-      
-              <div class="form-group">
-                <label for="restricciones-acompanante">Restricciones alimentarias del acompañante</label>
-                <input type="text" class="form-control" id="restricciones-acompanante" placeholder="Ingrese las restricciones alimentarias del acompañante">
+           
+              <label for="restrictions-detail">¿Tiene restricciones alimentarias?</label>
+              <br>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="restrictions-company" id="noRestrictions" value = "si" checked onchange="showInputCompany()">
+                  <label class="form-check-label" for="noRestrictions">
+                      No
+                  </label>
               </div>
-            </div>
-      
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="restrictions-company" id="yesRestrictionsCompany "value= "no" onchange="showInputCompany()">
+                  <label class="form-check-label" for="yesRestrictions">
+                      Sí
+                  </label>
+              </div>
+              <br>
+              <div id="restrictionDetailCompany" style="display: none;">
+                  <label for="details">Indicanos cuales:</label>
+                  <br>
+                  <input type="text" id="details">
+              </div>
+              <br>
+
+              <br>
+              <br>
             <button type="submit" class="btn btn-primary">Confirmar asistencia</button>
           </form>
         </div>
       
         <script>
           function mostrarAcompanante() {
-            var checkBox = document.getElementById("acompanante");
+            var checkBox = document.getElementById("yescompany");
             var text = document.getElementById("datos-acompanante");
+            console.log(checkBox.checked)
             if (checkBox.checked == true){
               text.style.display = "block";
             } else {
                text.style.display = "none";
             }
           }
+          function showInput() {
+    var detailDiv = document.getElementById('restrictionDetail');
+    var yesRestrictionsRadio = document.getElementById('yesRestrictions');
+    console.log(yesRestrictionsRadio.checked + "1");
+    if (yesRestrictionsRadio.checked) {
+        detailDiv.style.display = 'block';
+    } else {
+        detailDiv.style.display = 'none';
+    }
+}
+
+function showInputCompany() {
+    var detailDiv = document.getElementById('restrictionDetailCompany');
+    var yesRestrictionsRadio = document.getElementById('yesRestrictionsCompany');
+    console.log(yesRestrictionsRadio.checked + "1");
+    if (yesRestrictionsRadio.checked) {
+        detailDiv.style.display = 'block';
+    } else {
+        detailDiv.style.display = 'none';
+    }
+}
+
+function onSubmitForm(event) {
+    event.preventDefault();
+
+    // Recopila los valores de los campos del formulario
+    var nombre = document.getElementById('nombre').value;
+    var restricciones = document.querySelector('input[name="restrictions"]:checked').value;
+    var detalles = document.getElementById('details').value;
+    var estacionamiento = document.querySelector('input[name="estacionamiento"]:checked').value;
+    // Construye un objeto JSON con los valores
+    var formData = {
+        nombre: nombre,
+        restricciones: restricciones,
+        detalles: detalles,
+        estacionamiento: estacionamiento
+    };
+
+    // Muestra el JSON
+    alert(JSON.stringify(formData));
+  }
+    
+  function validInformation(){
+    var nombre = document.getElementById('nombre').value;
+    if(nombre == ""){
+      alert("Por favor ingrese su nombre");
+    }
+  }
+  // Añade el event listener a la forma
+  document.querySelector('form').addEventListener('submit', onSubmitForm);
+
         </script>
       </body>
       </html>
