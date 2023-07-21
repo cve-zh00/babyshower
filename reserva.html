@@ -167,35 +167,39 @@
         }
 
         function post(data){
-            var url = "https://us-central1-responsive-sun-371200.cloudfunctions.net/function-4"
-            // hacemos un post a la url con la data, y recibimos un ICS, que descargamos
-            fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            }).then(response => response.blob())
+    var url = "https://us-central1-responsive-sun-371200.cloudfunctions.net/function-4"
+    // hacemos un post a la url con la data, y recibimos un ICS, que descargamos
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(response => response.blob())
 
-            //descargamos el archivo
+    //descargamos el archivo
 
-            .then(blob => {
-                var url = window.URL.createObjectURL(blob);
-                var a = document.createElement('a');
-                a.href = url;
-                a.download = 'baby_shower.ics';
-                document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-                a.click();
-                a.remove();
-                window.location.href = "thanks.html";  //afterwards we remove the element again         
-            });
+    .then(blob => {
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'baby_shower.ics';
+        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+        a.click();
+        a.remove();  //afterwards we remove the element again   
+        
+        // redireccionamos a la página de gracias en una nueva pestaña
+        window.open("thanks.html", "_blank");
+    });
+}
+
             
 
             
 
             //vamos a la pagina de gracias
 
-        }
+        
 
         function onSubmitForm(event) {
             event.preventDefault();
