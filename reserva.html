@@ -122,7 +122,7 @@
                     <br>
                     <label for="restrictionDetailCompany">Indicanos cuales:</label>
                     <br>
-                    <input type="text" id="restrictionDetailCompany">
+                    <input type="text" id="restrictionDetailCompanys">
                 </div>
             </div>
                 
@@ -202,7 +202,7 @@
             var acompanante = document.querySelector('input[name="company"]:checked').value;
             var nombreAcompanante = document.getElementById('nombre-acompanante').value;
             var restriccionesAcompanante = document.querySelector('input[name="restrictions-company"]:checked').value;
-            var detallesAcompanante = document.getElementById('detailsCompany').value;
+            var detallesAcompanante = document.getElementById('restrictionDetailCompanys').value;
             // Construye un objeto JSON con los valores
             var formData = {
                 nombre: nombre,
@@ -215,7 +215,10 @@
                 detallesAcompanante: detallesAcompanante
 
             };
+            console.log(formData);
             post(formData);
+            //vamos a la pagina de gracias
+            window.location.href = "thanks.html";
             // Muestra el JSON
         }
 
