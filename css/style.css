@@ -7,11 +7,12 @@ body {
 }
 
 h4 {
-    margin-top: 4px;
-    padding: 0 25% 1% 25%;
+    font-family: 'Playfair Display', serif;
+    padding: 0 15% 1% 15%;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-style: italic;
+    letter-spacing: 1px;
 }
 
 .card {
@@ -22,11 +23,11 @@ h4 {
     border: 2px solid #bad2f8;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 90%;
+    width: 60%;
+    height: 200px;
+    overflow: hidden;
     margin: 10px auto;
     padding: 12px 0px 0 0 ;
-    
-    
 }
 
 .content {
@@ -48,17 +49,17 @@ h4 {
     width: 100%;
     height: 100%;
     order: 2;
-   
     grid-template-rows: 1fr 2fr;
     overflow: hidden;
 }
 .grid-a{
     order: 1;
     display: flex;
-    min-width: 40%;
+    min-width: 35%;
     align-items: center;
     justify-content: center;
-    max-width: 40%;
+    max-width: 35%;
+    margin-left: 5%;
 
 }
 .grid-b1 {
@@ -73,7 +74,6 @@ h4 {
 .grid-b2 {
     display: flex;
     /* ponemos las cosas en la parte superior */
-
     /* alineamos en la parte superior */
     justify-content: flex-start;
     flex-direction: column; 
@@ -81,7 +81,7 @@ h4 {
 
 .card h3 {
     padding: 0;
-    margin: 0;
+    margin-top: 15px;
     font-size: 1.5rem;
     text-align: center;
     color: #000000;
@@ -89,8 +89,9 @@ h4 {
 }
 
 .card .content {
+    
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     /* que sea maximo el 100% de su contenedor */
@@ -126,14 +127,7 @@ h4 {
     color: #EE0000;
 }
 .buttons_front{
-    margin-top: 30%;
-}
-.link {
-    color: #0000EE;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: color 0.5s ease;
+    margin-top: 10%;
 }
 
 
@@ -147,7 +141,7 @@ h4 {
     /* centramos la imagen a la derecha */
    
     transition: transform 0.3s ease;
-    width: 100%;
+    width: 22%;
 }
 
 .button-74, .button-75, .button-77{
@@ -160,10 +154,11 @@ h4 {
     box-shadow: #422800 4px 4px 0 0;
     color: #422800;
     cursor: pointer;
+    /*aumentamos el ancho de los botones*/
     
     font-weight: 600;
     width: 80%;
-    height: 20px;
+    height: 25px;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
@@ -180,10 +175,13 @@ h4 {
     transform: translate(2px, 2px);
 }
 
-
+.button-77{
+    
+    margin-top: 30px;
+}
 .button-75 {
     background-color: #FFCBD0;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 .back_buttons{
     width: 100%;
@@ -195,19 +193,25 @@ ul{
     margin: 0;
 }
 li{
-    display: inline-block;
+    
     margin-bottom: 2px;
     align-items: center;
     text-align: center;
+    color: #0000EE;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.5s ease;
+    word-break: break-all;
 }
 /* Media queries for responsive design */
 @media (max-width: 600px) {
     .card {
-        width: 50%;
-        height: 135px;
+        width: 60%;
+        height: 150px;
         overflow: hidden;
         
-        padding: 8px 0px 0 10px;
+        padding: 5px 10px 5px 10px;
     }
 
     .card .content {
@@ -219,20 +223,22 @@ li{
         max-width: 35%;
     }
     .grid-b {
-        margin-left: 10px;
+        margin-left: 12px;
     }
     .grid-b2 {
         width: 100%;
     }
     .link {
+        text-decoration: none;
         font-size: 0.6rem;
         /* si se pasa que continue en la siguiente linea */
         word-break: break-all;
+        overflow: hidden;
         padding-left: 3px;
     }
 
     #elephant {
-        width: 27%;
+        width: 23%;
         
         
     }
@@ -245,12 +251,17 @@ li{
     .card h3 {
         font-size: 0.8em
     }
+    .link{
+        font-size: 0.6em;
+        margin-left: 5px;
+    }
 
     .button-74, .button-75, .button-77 {
         
         font-size: 0.5em;
-       
-    
+        width: 80%;
+        height: 20px;
+        margin: 10px auto; 
         
         box-shadow: #422800 2px 2px 0 0;
         border: 1px solid #422800;
@@ -261,5 +272,20 @@ li{
     }
     p{
         font-size: 0.7em;
+    }
+    .button-75 {
+        background-color: #FFCBD0;
+        margin-top: 10px;
+    }
+    .card h3 {
+        padding: 0;
+        margin-top: 10px;
+        font-size: 0.7rem;
+        text-align: center;
+        color: #000000;
+        font-family: 'Playfair Display', serif;
+    }
+    .grid-b1 p{
+        font-size: 0.7rem;
     }
 }
