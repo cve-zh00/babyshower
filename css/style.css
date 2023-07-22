@@ -23,8 +23,8 @@ h4 {
     border: 2px solid #bad2f8;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 60%;
-    height: 200px;
+    width: 55%;
+    height: 250px;
     overflow: hidden;
     margin: 10px auto;
     padding: 12px 0px 0 0 ;
@@ -102,7 +102,7 @@ h4 {
 
 .card img {
     margin-top: 5%;
-    width: 100%;
+    width: 80%;
     height: auto;
     border-radius: 15px; 
     text-align: right;
@@ -155,15 +155,16 @@ h4 {
     color: #422800;
     cursor: pointer;
     /*aumentamos el ancho de los botones*/
-    
+    /*mayor tamaño de letra*/
+    font-size: 1rem;
     font-weight: 600;
     width: 80%;
-    height: 25px;
+    height: 40px;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    margin: 5px auto; /* Centers the button and adds 10px margin-top and margin-bottom */
+    margin: 10px auto; /* Centers the button and adds 10px margin-top and margin-bottom */
 
 }
 .button-74:hover, .button-75:hover, .button-77:hover {

@@ -1,4 +1,9 @@
 // Función que hace la solicitud a la API
+window.onload = function() {
+  var img = new Image();
+  img.src = "https://storage.googleapis.com/imagenbabe/images/elephant.png";
+};
+
 function fetchProducts() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -164,6 +169,10 @@ function createCards(productos) {
     
     
     var buyProductButton = createButton("Compré este regalo", "button-75", null);
+    /* cuando se haga click sde debe mandar a la pagina de gracias */
+    buyProductButton.onclick = function() {
+      window.location.href = "thanks.html";
+    };
     buttons_front.appendChild(buyProductButton);
     divB2.appendChild(buttons_front);
     var disclaimer = createDisclaimer(producto);
