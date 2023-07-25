@@ -170,9 +170,10 @@ function createCards(productos) {
     
     var buyProductButton = createButton("Compré este regalo", "button-75", null);
     /* cuando se haga click sde debe mandar a la pagina de gracias */
+    /* le agregamos la funcion buyProductt() */
     buyProductButton.onclick = function() {
-      window.location.href = "thanks.html";
-    };
+      buyProductt(producto.titulo);
+  };
     buttons_front.appendChild(buyProductButton);
     divB2.appendChild(buttons_front);
     var disclaimer = createDisclaimer(producto);
@@ -201,6 +202,38 @@ function createCards(productos) {
   
   
 }
+
+function buyProductt(name_product) {
+  // Lanzamos un alert para confirmar la compra con 2 botones
+  console.log(name_product);
+  var r = confirm("¿Estás seguro que deseas confirmar la compra del regalo? El regalo se eliminará de la lista.");
+
+  if (r == true) {
+      /* enviamos una solicitud a la API para que elimine el producto de la lista */
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      
+      var raw = JSON.stringify({
+          "accion": 3,
+          "nombre": name_product
+      });
+
+      var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+      };
+
+      fetch("https://us-central1-responsive-sun-371200.cloudfunctions.net/function-1", requestOptions)// convertir la respuesta a JSON
+          .then(response => {
+              console.log(response);
+              window.location.href = "thanks.html";
+          })
+  }
+}
+
+
 
 function elephant() {
   var elephantImage = document.getElementById("elephant");
